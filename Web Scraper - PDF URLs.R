@@ -79,8 +79,9 @@ complete_farm_bureau_pdf_urls <- function(pdf_paths) {
             "pdf/"                        = result <- paste0("https://barley.idaho.gov/", path),
             "/pdf/"                       = result <- paste0("https://barley.idaho.gov", path),
             "../pdf/"                     = result <- paste0("https://barley.idaho.gov/", path) %>% 
-              str_replace("\\.\\./", ""), # Remove the ../
-            "/barley.idaho.gov_prod/pdf/" = result <- paste0("https:/", path)
+              str_replace("\\.\\./", ""), # Replace the ../ with ""
+            "/barley.idaho.gov_prod/pdf/" = result <- paste0("https:/", path) %>% 
+              str_replace("_prod", "") # Replace the _prod with ""
     )
     # Change the current row in the dataframe to the complete PDF URL
     clean_urls[r,1] <- result
@@ -117,9 +118,8 @@ complete_urls <- complete_farm_bureau_pdf_urls(paths)
 # Show the results
 print(complete_urls)
 
-
-
-
+# Save results to a folder
+save(complete_urls, file = "PDF URLs\\all_pdf_urls.RData")
 
 
 
