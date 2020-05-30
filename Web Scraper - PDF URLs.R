@@ -72,13 +72,6 @@ main <- function(folder, url, date_from, date_to) {
   date_range <- create_interval(date_from, date_to)
   
   
-  # # Test %within% with date and intervals
-  # test_date1 <- mdy("2/13/2011")
-  # test_date2 <- mdy("2/13/2106")
-  # print(test_date1 %within% date_range)
-  # print(test_date2 %within% date_range)
-  
-  
   # Create a dataframe containing the HTML Element and Date of all pdf url elements on website
   df_dates_and_elements <- scrape_all_pdf_dates_and_elements(url)
   # print(df_dates_and_elements)
@@ -107,8 +100,8 @@ read_in_df <- function(location) {
     warning = function(cond) {
       message(paste0("The dataframe '", df_name, "' does not exist in given folder '", location, "'")) 
       message("Created a new dataframe instead")        
-      # Return a new dataframe with 0 rows and 3 columns
-      return(as.data.frame(matrix(nrow = 0, ncol = 3)))
+      # Return a new dataframe with 0 rows and 2 columns
+      return(as.data.frame(matrix(nrow = 0, ncol = 2)))
     })
   
   # Return the result from tryCatch
@@ -428,7 +421,11 @@ main(folder = "PDF URLs",
 # dates <- scrape_pdf_dates(url = "https://barley.idaho.gov/archived_reports.html") %>% print()
 
 
-
+# # Test %within% with date and intervals
+# test_date1 <- mdy("2/13/2011")
+# test_date2 <- mdy("2/13/2106")
+# print(test_date1 %within% date_range)
+# print(test_date2 %within% date_range)
 
 
 
