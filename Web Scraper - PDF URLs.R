@@ -402,6 +402,7 @@ main(folder = "PDF URLs",
 
 
 
+# USE THIS CODE TO PUT AN "all_pdf_urls.RData" DATAFRAME INTO A FILE
 # Save all pdf url's from the Farmer's Bureau website to specified folder, returning the resulting dataframe
 # get_pdf_urls(url = "https://barley.idaho.gov/archived_reports.html",
 #              folder_path = "PDF URLs")
@@ -422,6 +423,7 @@ main(folder = "PDF URLs",
 
 
 # # Test %within% with date and intervals
+# date_range <- interval(start = mdy("11/1/2009"), end = now())
 # test_date1 <- mdy("2/13/2011")
 # test_date2 <- mdy("2/13/2106")
 # print(test_date1 %within% date_range)
